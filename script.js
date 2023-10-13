@@ -6,6 +6,8 @@ const scoreMenu = document.querySelector(".score")
 const finalScore = document.querySelector(".final_score > span")
 const menu = document.querySelector(".menu_screen")
 const btnPlay = document.querySelector(".btn_play")
+const settings = document.querySelector(".settings > span")
+
 
 const audio = new Audio("assets/audio.mp3")
 
@@ -130,7 +132,7 @@ const checkCollision = () => {
 
 const gameOver = () => {
     direction = undefined
-
+    
     menu.style.display = 'flex'
     finalScore.innerText = score.innerText
     canvas.style.filter = "blur(3px)"
@@ -182,22 +184,21 @@ gameLoop()
 
 // Criar um evento de teclado
 document.addEventListener("keydown", ({ key }) => {
-    if (key == "ArrowRight" && direction != "left") {
+    if (key == "ArrowRight" || key == 'd' && direction != "left") {
         direction = "right"
     }
 
-    if (key == "ArrowLeft" && direction != "right") {
+    if (key == "ArrowLeft" || key == "a" && direction != "right") {
         direction = "left"
     }
 
-    if (key == "ArrowDown" && direction != "up") {
+    if (key == "ArrowDown" || key == "s" && direction != "up") {
         direction = "down"
     }
 
-    if (key == "ArrowUp" && direction != "down") {
+    if (key == "ArrowUp" || key == "w" && direction != "down") {
         direction = "up"
-    }
-    
+    } 
 }) 
 
 btnPlay.addEventListener("click", (evt) => {
